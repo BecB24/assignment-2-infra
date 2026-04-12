@@ -16,15 +16,6 @@ pipeline {
             }
         }
 
-        stage('Install Ansible') {
-            steps {
-                sh '''
-                    sudo apt update
-                    sudo apt install -y ansible
-                '''
-            }
-        }
-
         stage('Deploy with Ansible') {
             steps {
                 sh '''
