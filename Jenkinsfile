@@ -28,7 +28,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh '''
-                    curl http://34.201.220.5
+                    curl http://localhost
                 '''
             }
         }
