@@ -4,10 +4,6 @@
     app_container_name: assignment2-app
 
   tasks:
-    - name: Update apt cache
-      apt:
-        update_cache: yes
-
     - name: Install Docker
       apt:
         name: docker.io
