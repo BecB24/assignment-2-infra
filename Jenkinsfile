@@ -37,7 +37,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh '''
-                    curl http://YOUR_EC2_PUBLIC_IP
+                    curl http://34.201.220.5
                 '''
             }
         }
