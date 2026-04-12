@@ -1,0 +1,34 @@
+- hosts: web
+  become: yes
+  vars:
+    app_container_name: assignment2-app
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull requested Docker image
+      command: docker pull {{ docker_image }}
+
+    - name: Stop existing container if running
+      command: docker rm -f {{ app_container_name }}
+      ignore_errors: yes
+
+    - name: Run application container
+      command: >
+        docker run -d
+        --name {{ app_container_name }}
+        -p 80:80
+        {{ docker_image }}
