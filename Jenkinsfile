@@ -26,13 +26,13 @@ pipeline {
         }
 
         stage('Verify Deployment') {
-            steps {
-                sh '''
-                    curl http://localhost
-                '''
-            }
-        }
+    steps {
+        sh '''
+            sleep 10
+            curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost
+        '''
     }
+}
 
     post {
         success {
